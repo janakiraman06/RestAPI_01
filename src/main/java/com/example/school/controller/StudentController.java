@@ -31,6 +31,7 @@ public class StudentController {
 
     @RequestMapping(path ="/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
     public Student displayStudent(@PathVariable(name = "id") int sId){
+        System.out.println("Searching by ID  : " + sId);
         return studentManager.displayStudent(sId);
     }
 

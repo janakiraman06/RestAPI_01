@@ -3,6 +3,7 @@ package com.example.school.manager;
 import com.example.school.entity.Student;
 import com.example.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 
@@ -29,7 +30,16 @@ public class StudentManager {
         return studentRepository.findAll();
     }
 
+    @Cacheable(value ="student")
     public Student displayStudent(int sId){
+        try {
+            System.out.println("Sleep 5s");
+            Thread.sleep(5000);
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
         return studentRepository.findById(sId).get();
     }
 
