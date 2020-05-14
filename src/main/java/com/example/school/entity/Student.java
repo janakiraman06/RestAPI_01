@@ -1,11 +1,13 @@
 package com.example.school.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by Janak on 09-05-2020.
  */
 @Entity
+/*@XmlRootElement*/
 @Table(name="students")
 public class Student {
 

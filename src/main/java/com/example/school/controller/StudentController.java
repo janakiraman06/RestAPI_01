@@ -24,12 +24,12 @@ public class StudentController {
         return studentManager.addStudent(student);
     }
 
-    @RequestMapping(path = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
     public Iterable<Student> displayAllStudents(){
         return studentManager.displayAllStudents();
     }
 
-    @RequestMapping(path ="/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path ="/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
     public Student displayStudent(@PathVariable(name = "id") int sId){
         return studentManager.displayStudent(sId);
     }

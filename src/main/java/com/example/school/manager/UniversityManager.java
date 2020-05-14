@@ -21,8 +21,8 @@ public class UniversityManager {
     UniversityRepository universityRepository;
     @Autowired
     RestTemplateClient restTemplateClient;
-    /*@Autowired
-    StudentMarks studentMarks;*/
+    @Autowired
+    StudentMarks studentMarks;
     public String addMarks (@RequestBody Marks marks) {
          universityRepository.save(marks);
          return "Marks added";
@@ -33,9 +33,6 @@ public class UniversityManager {
         ResponseEntity<Student> studentResponseEntity =  restTemplateClient.getForEntity(uri, Student.class);
         Student student = studentResponseEntity.getBody();
         Marks marks = universityRepository.findById(studentId).get();
-
-        //check if object initialization is okay??
-        StudentMarks studentMarks = new StudentMarks();
         studentMarks.setsStudent(student);
         studentMarks.setsMarks(marks);
         return studentMarks;

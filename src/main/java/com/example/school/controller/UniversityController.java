@@ -23,7 +23,7 @@ public class UniversityController {
     public String addMarks (@RequestBody Marks marks) {
         return universityManager.addMarks(marks);
     }
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
     public StudentMarks getMarksWithSudents(@PathVariable(name = "id") int studentId){
         return universityManager.getMarksWithSudents(studentId);
     }

@@ -3,12 +3,14 @@ package com.example.school.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by Janak on 10-05-2020.
  */
 
 @Entity
+/*@XmlRootElement*/
 public class Marks {
 
     @Id
