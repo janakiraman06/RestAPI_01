@@ -10,15 +10,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 /**
- * Created by Janak on 14-05-2020.
+ * Created by Janak on 12-05-2020.
  */
 @Aspect
 @Component
-public class LoggingAspectMarks {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspectMarks.class);
-    //private static final Logger LOGGER1 = LoggerFactory.getLogger(LoggingAspectStudent.class);
-    @Around("execution(* com.example.school.controller.UniversityController.*(..))")
-    public Object profileMarksMethods(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+public class LoggingResponseStudent {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingResponseStudent.class);
+
+
+    @Around("execution(* com.example.school.controller.StudentController.*(..))")
+    public Object profileAllMethods(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
 
@@ -29,11 +30,8 @@ public class LoggingAspectMarks {
         Object result = proceedingJoinPoint.proceed();
         stopWatch.stop();
         //execTime = execTime + stopWatch.getTotalTimeMillis();
-        LOGGER.info("Execution time of " + className + "." + methodName + " "
+        LOGGER.debug("Total Execution time of " + className + "." + methodName + " "
                 + ":: " + stopWatch.getTotalTimeMillis() + " ms" );
-        /*LOGGER1.info("Execution time of " + className + "." + methodName + " "
-                + ":: " + stopWatch.getTotalTimeMillis() + " ms" );*/
         return result;
     }
-
 }
