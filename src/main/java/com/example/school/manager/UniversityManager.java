@@ -5,6 +5,7 @@ import com.example.school.entity.Student;
 import com.example.school.model.StudentMarks;
 import com.example.school.repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class UniversityManager {
          return "Marks added";
     }
 
+    @Cacheable(value = "studentMarks", key = "#studentId", condition = "#studentId>1")
     public StudentMarks getMarksWithSudents(int studentId){
         final String uri = "http://localhost:8080/student/" + studentId;
         ResponseEntity<Student> studentResponseEntity =  restTemplateClient.getForEntity(uri, Student.class);

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Component
 /*@XmlRootElement*/
-public class StudentMarks{
+public class StudentMarks implements Serializable{
     private Student sStudent;
     private Marks sMarks;
 

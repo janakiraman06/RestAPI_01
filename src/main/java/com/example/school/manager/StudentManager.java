@@ -2,6 +2,8 @@ package com.example.school.manager;
 
 import com.example.school.entity.Student;
 import com.example.school.repository.StudentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ import java.util.List;
 @Service
 public class StudentManager {
 
+    private final Logger LOGGER = LoggerFactory.getLogger(StudentManager.class);
+
     @Autowired
     private StudentRepository studentRepository;
     @Autowired
@@ -30,16 +34,11 @@ public class StudentManager {
         return studentRepository.findAll();
     }
 
-    @Cacheable(value ="student")
+    @Cacheable(value ="student", keyGenerator = "studentKeyGenerator" /*key = "#sId", condition = "#sId <2", unless = "#sId > 5"*/)
     public Student displayStudent(int sId){
-        try {
-            System.out.println("Sleep 5s");
-            Thread.sleep(5000);
-        }
-        catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
+            LOGGER.info("Entering displayStudent in StudentManager");
+            //System.out.println("Sleep 5s");
+            //Thread.sleep(5000);
         return studentRepository.findById(sId).get();
     }
 

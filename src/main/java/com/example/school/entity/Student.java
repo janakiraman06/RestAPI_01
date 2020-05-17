@@ -2,6 +2,7 @@ package com.example.school.entity;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created by Janak on 09-05-2020.
@@ -9,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 /*@XmlRootElement*/
 @Table(name="students")
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @Column(name="s_id")

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created by Janak on 10-05-2020.
@@ -11,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 /*@XmlRootElement*/
-public class Marks {
+public class Marks implements Serializable {
 
     @Id
     @Column(name = "student_id")
